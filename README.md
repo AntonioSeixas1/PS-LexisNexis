@@ -8,7 +8,7 @@ Repositório para solução das tarefas referente ao processo seletivo da Lexis 
 
 ## Executando o código
 
-Vá o diretório e firstTask e execute no terminal o comando "python main.py"
+Vá ao diretório firstTask e execute no terminal o comando "python main.py"
 
 O programa irá pedir que insira qual resposta de qual item se deseja visualizar sendo:
 - Item 1: O nome dos campos do arquivo
