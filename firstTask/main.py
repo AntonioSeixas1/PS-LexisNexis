@@ -23,6 +23,7 @@ def get_types_of_products(df):
     df2 = df.drop_duplicates(subset = ['TIPO DE PRODUTO (STATUS DO PRODUTO)'])
     print("\nOs tipos de produto são: ", df2['TIPO DE PRODUTO (STATUS DO PRODUTO)'].drop(index = 7776).to_numpy())
 
+
 # Prints Most cheap generic product
 def get_most_cheap_generic_product(df):
     df3 = df[df.PRODUTO == df.SUBSTÂNCIA]
@@ -57,7 +58,16 @@ def is_there_product_with_same_substance(df1, df2):
     if not(condition):
         print("\nNão existe um produto que possua a mesma substância de um outro produto do arquivo original com preço final sem impostos inferior a 100")
 
+''' Debug Functions
 
+def get_answer_2020(df):
+    df2 = df.drop_duplicates(subset = ['COMERCIALIZAÇÃO 2020'])
+    print("\nRespostas da comercialização 2020: ", df2['COMERCIALIZAÇÃO 2020'].to_numpy())
+
+def get_answer_tarja(df):
+    df2 = df.drop_duplicates(subset = ['TARJA'])
+    print("\nRespostas da Tarja: ", df2['TARJA'].to_numpy())
+'''
 
 
 
@@ -70,7 +80,7 @@ def main():
     ### Creating new output.csv
 
     ## Treating pattern in name "Tarja Vermelha"
-    df.loc[(df['TARJA'] ==  "Tarja  Vermelha") | (df['TARJA'] ==  "Tarja Vermelha(*)") , 'TARJA'] = "Tarja Vermelha"
+    df.loc[(df['TARJA'] ==  "Tarja  Vermelha") | (df['TARJA'] ==  "Tarja Vermelha(*)") | (df['TARJA'] == "Tarja Vermelha (*)") , 'TARJA'] = "Tarja Vermelha"
 
     #df[(df['PF Sem Impostos'] > 100.0) & (df['TARJA'] == "Tarja Vermelha") & (df['COMERCIALIZAÇÃO 2020'] == "Sim")].to_csv(r'C:\Users\anton\OneDrive\Documentos\LexisNexis\PS-LexisNexis\firstTask\output.csv', index = False)
 
@@ -85,6 +95,7 @@ def main():
     #new_df.to_csv(r'C:\Users\anton\OneDrive\Documentos\LexisNexis\PS-LexisNexis\firstTask\output.csv', index = False)
 
     new_df['PF Sem Impostos'] = pd.to_numeric(new_df['PF Sem Impostos'])
+    
     print("Olá! Bem vindo a solução da atividade proposta pela LexisNexis")
     while True:
         selection = int(input("\nInsira de 1 a 7 qual item deseja visualizar a resposta: "))
